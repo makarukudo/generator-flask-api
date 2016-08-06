@@ -1,4 +1,6 @@
-# generator-flask-api-generator [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-flask-api-generator
+
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > Generates controllers, models, validators, and api scaffold for flask python
 
 ## Installation
@@ -10,23 +12,69 @@ npm install -g yo
 npm install -g generator-flask-api-generator
 ```
 
-Then generate your new project:
+Then generate your new api endpoint:
 
 ```bash
-yo flask-api-generator
+yo flask-api-generator COMMAND FOLDER MODEL TABLE FIELDS
 ```
 
-## Getting To Know Yeoman
+### Example
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
+```bash
+yo flask-api-generator api . User users 'id:integer,primary,increment|username:string=80,notnull'
+```
+This generates model, controller and validator for User
+
+"." - represents the current folder as the FOLDER
 
 ## License
 
-MIT © [Michael Brucal]()
+MIT © [Michael Brucal]() for Wingaru Kids
 
+## Commands
+
+api - generates the controllers, models and validators
+
+model - generates a model
+
+validator - generates a validator
+
+controller - generates a controller on FOLDER/controllers/MODEL_NAME
+
+## Model Fields
+
+| Fields | Description           |
+|--------|-----------------------|
+| string | creates a db.String   |
+| int    | creates a db.Integer  |
+| text   | creates a db.Text     |
+| bool   | creates a db.Boolean  |
+| float  | creates a db.Float    |
+| date   | creates a db.DateTime |
+| primary | creates a primary_key=True |
+| unique | creates a unique=True |
+| index | creates an index=True |
+| null | creates a nullable=True |
+| notnull | creates a nullable=False |
+| increment | creates a db.Sequence('VALUE') |
+| foreign | creates a db.ForeignKey('VALUE') |
+| relationship | creates a db.relationship('VALUE') |
+| default | creates a server_default |
+
+## Validator Fields
+
+| Fields   |
+|----------|
+| min      |
+| max      |
+| length   |
+| equals   |
+| anyof    |
+| range    |
+| required |
+| email    |
+| url      |
+| trim     |
 
 [npm-image]: https://badge.fury.io/js/generator-flask-api-generator.svg
 [npm-url]: https://npmjs.org/package/generator-flask-api-generator

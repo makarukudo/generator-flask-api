@@ -9,11 +9,7 @@ class ApiTokenInput(Inputs):
         ]
     }
 
-class <%= name_upper %>Inputs(Inputs):
+class <%= model %>Inputs(Inputs):
     form = {
-        'name': [
-            validators.DataRequired(message="Email field is required"),
-#            validators.Email(message="Please enter a valid email"),
-            validators.Length(max=160)
-            ]
+        <%- createValidatorFields(fields) %>
     }
